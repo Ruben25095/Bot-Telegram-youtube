@@ -7,7 +7,11 @@ import os
 async def Descargar(update: Update, context: ContextTypes.DEFAULT_TYPE):
     # Mensaje recibido del    usuario
     
+
+# verificamos si el directorio ya existe
+    ruta=patch_ruta()
     print(update.message.text)
+
     
     # Instancia de YouTube para el video deseado
     yt = YouTube(update.message.text)
@@ -22,12 +26,15 @@ async def Descargar(update: Update, context: ContextTypes.DEFAULT_TYPE):
     descarga = yt.streams.get_audio_only("mp4")
     size= descarga.filesize
     size_mb = size / (1024 * 1024)
+
     print(size_mb)
     # Se especifica el nombre del archivo para la descarga
-    descarga.download(output_path=patch_Descargas, filename=f"{nombre}.mp4")
-    video_path = os.path.join(patch_Descargas, f"{nombre}.mp4")
+    #patch_Descargas
+    descarga.download(output_path=ruta, filename=f"{nombre}.mp4")
+    video_path = os.path.join(ruta, f"{nombre}.mp4")
     print(video_path)
     #await update.message.reply_video(video_path)
+    await update.message.reply_text(size_mb)
     await update.message.reply_audio(video_path)
 
     # Subir el video a Telegram
@@ -36,13 +43,11 @@ async def Descargar(update: Update, context: ContextTypes.DEFAULT_TYPE):
     #  mantener
     os.remove(video_path)
 
-# Configuración del bot
+   # Configuración del bot
 app = ApplicationBuilder().token(Telegram_Token).read_timeout(60) .write_timeout(60).build()
 app.add_handler(CommandHandler("descargar", Descargar))
 
 app.run_polling(allowed_updates=Update.ALL_TYPES)
-
-
 
 
 
