@@ -11,3 +11,6 @@
 <br>
 <p>Finalmente el bot nos respondera con un archivo de audio y el peso del audio</p>
 <img src="botn respuesta.jpeg" alt="Girl in a jacket" width="400" height="700">
+
+
+<h1>Para usar este codigo debes agregar tu token en el archivo login.py y instalar la librerias que indica el archivo requirements</h1>
