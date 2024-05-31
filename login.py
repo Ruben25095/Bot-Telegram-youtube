@@ -3,7 +3,7 @@ from os import path
 
 
 
-Telegram_Token="6943437955:AAFh7T9-iCH1ZNNCvHATdhv47IUzcFayGd0";
+Telegram_Token="Tu Token";
 
 #patch_Descargas="c:/Users/ruben/OneDrive/Escritorio/Entorno/venv/bot/Descargas/";
 
